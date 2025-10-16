@@ -1,0 +1,7 @@
+{
+  "extends": "@startracex/dev-config/tsconfig/lib",
+  "compilerOptions": {
+    "isolatedDeclarations": true,
+    "noEmit": true
+  }
+}
