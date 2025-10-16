@@ -26,9 +26,11 @@ export const replacements: Replacement[] = [
         // import.meta.dirname -> __dirname
         case "dirname":
           sm.overwrite(node.getStart(), node.name.getEnd(), "__dirname");
+          break;
         // import.meta.filename -> __filename
         case "filename":
           sm.overwrite(node.getStart(), node.getEnd(), "__filename");
+          break;
       }
     }
   },
