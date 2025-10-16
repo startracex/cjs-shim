@@ -26,6 +26,9 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
             case "env":
               path.replaceWith(t.identifier("process.env"));
               break;
+            case "resolve":
+              path.replaceWith(t.identifier("require.resolve"));
+              break;
           }
         }
       },

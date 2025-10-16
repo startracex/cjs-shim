@@ -4,6 +4,7 @@
 - Replaces `fileURLToPath(import.meta.url)` to `__filename`
 - Replaces `import.meta.dirname` to `__dirname`
 - Replaces `import.meta.env` to `process.env`
+- Replaces `import.meta.resolve` to `require.resolve`
 - Replaces `typeof import.meta` to `undefined`
 - Removes `require = createRequire(import.meta.url)`
 - Removes `global = globalThis`

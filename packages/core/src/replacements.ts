@@ -35,6 +35,10 @@ export const replacements: Replacement[] = [
         case "env":
           sm.overwrite(node.getStart(), node.getEnd(), "process.env");
           break;
+        // import.meta.resolve -> require.resolve
+        case "resolve":
+          sm.overwrite(node.getStart(), node.getEnd(), "require.resolve");
+          break;
       }
     }
   },
