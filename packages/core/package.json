@@ -1,0 +1,33 @@
+{
+  "name": "cjs-shim",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "CJS/Node shims",
+  "dependencies": {
+    "magic-string": "^0.30.19",
+    "typescript": "^5.9.3"
+  },
+  "files": [
+    "src",
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/index.js",
+      "require": "./build/index.cjs"
+    },
+    "./replacements": {
+      "types": "./build/replacements.d.ts",
+      "import": "./build/replacements.js",
+      "require": "./build/replacements.cjs"
+    },
+    "./*": "./*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/startracex/cjs-shim.git"
+  },
+  "author": "startracex",
+  "license": "MIT"
+}
