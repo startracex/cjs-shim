@@ -1,0 +1,50 @@
+{
+  "name": "unplugin-cjs-shim",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "CJS/Node shim plugins",
+  "dependencies": {
+    "cjs-shim": "workspace:^",
+    "unplugin": "^2.3.10"
+  },
+  "devDependencies": {
+    "@farmfe/core": "^1.7.11",
+    "@nuxt/kit": "^4.1.3",
+    "@nuxt/schema": "^4.1.3",
+    "esbuild": "^0.25.11",
+    "rolldown": "1.0.0-beta.43",
+    "rollup": "^4.52.4",
+    "vite": "^7.1.10",
+    "webpack": "^5.102.1"
+  },
+  "peerDependencies": {
+    "@nuxt/kit": "*"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    }
+  },
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/index.js",
+      "require": "./build/index.cjs"
+    },
+    "./*": {
+      "types": "./build/*.d.ts",
+      "import": "./build/*.js",
+      "require": "./build/*.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/startracex/cjs-shim.git"
+  },
+  "author": "startracex",
+  "license": "MIT"
+}
