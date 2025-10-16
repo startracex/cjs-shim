@@ -31,6 +31,10 @@ export const replacements: Replacement[] = [
         case "filename":
           sm.overwrite(node.getStart(), node.getEnd(), "__filename");
           break;
+        // import.meta.env -> process.env
+        case "env":
+          sm.overwrite(node.getStart(), node.getEnd(), "process.env");
+          break;
       }
     }
   },

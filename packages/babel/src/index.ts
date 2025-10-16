@@ -16,10 +16,16 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
 
         if (t.isIdentifier(path.node.property)) {
           const propName = path.node.property.name;
-          if (propName === "filename") {
-            path.replaceWith(t.identifier("__filename"));
-          } else if (propName === "dirname") {
-            path.replaceWith(t.identifier("__dirname"));
+          switch (propName) {
+            case "filename":
+              path.replaceWith(t.identifier("__filename"));
+              break;
+            case "dirname":
+              path.replaceWith(t.identifier("__dirname"));
+              break;
+            case "env":
+              path.replaceWith(t.identifier("process.env"));
+              break;
           }
         }
       },
