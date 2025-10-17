@@ -17,16 +17,16 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
           switch (propName) {
             case "filename":
               path.replaceWith(t.identifier("__filename"));
-              break;
+              return;
             case "dirname":
               path.replaceWith(t.identifier("__dirname"));
-              break;
+              return;
             case "env":
               path.replaceWith(t.identifier("process.env"));
-              break;
+              return;
             case "resolve":
               path.replaceWith(t.identifier("require.resolve"));
-              break;
+              return;
           }
         }
       },

@@ -25,19 +25,19 @@ export const shim: Shim =
         // import.meta.dirname -> __dirname
         case "dirname":
           sm.overwrite(node.getStart(), node.name.getEnd(), "__dirname");
-          break;
+          return;
         // import.meta.filename -> __filename
         case "filename":
           sm.overwrite(node.getStart(), node.getEnd(), "__filename");
-          break;
+          return;
         // import.meta.env -> process.env
         case "env":
           sm.overwrite(node.getStart(), node.getEnd(), "process.env");
-          break;
+          return;
         // import.meta.resolve -> require.resolve
         case "resolve":
           sm.overwrite(node.getStart(), node.getEnd(), "require.resolve");
-          break;
+          return;
       }
       return;
     }
@@ -77,7 +77,7 @@ export const shim: Shim =
           len--;
           if (len === 0) {
             sm.remove(node.getStart(), node.getEnd());
-            break;
+            return;
           }
           if (i === 0) {
             sm.remove(decl.getStart(), declarations[i + 1].getStart());
