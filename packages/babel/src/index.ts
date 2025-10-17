@@ -5,7 +5,7 @@ const isImportMeta = (t: typeof Types, node: Types.Node): node is Types.MetaProp
 
 export default function ({ types: t }: { types: typeof Types }): PluginObj {
   return {
-    name: "shim-cjs",
+    name: "cjs-shim",
     visitor: {
       MemberExpression(path) {
         if (!isImportMeta(t, path.node.object)) {
