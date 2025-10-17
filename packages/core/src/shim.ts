@@ -9,17 +9,16 @@ import {
   type Node,
 } from "typescript";
 
-export type Replacement = (node: Node, sm: MagicString) => void;
+export type Shim = (node: Node, sm: MagicString) => void;
 
-export const replacements: Replacement[] = [
+export const shim: Shim =
   // typeof import.meta
   (node, sm) => {
     if (isTypeOfExpression(node) && isMetaProperty(node.expression)) {
       sm.overwrite(node.getStart(), node.getEnd(), '"undefined"');
+      return;
     }
-  },
 
-  (node, sm) => {
     // import.meta
     if (isPropertyAccessExpression(node) && isMetaProperty(node.expression)) {
       switch (node.name.getText()) {
@@ -40,11 +39,10 @@ export const replacements: Replacement[] = [
           sm.overwrite(node.getStart(), node.getEnd(), "require.resolve");
           break;
       }
+      return;
     }
-  },
 
-  // fileURLToPath(import.meta.url) -> __filename
-  (node, sm) => {
+    // fileURLToPath(import.meta.url) -> __filename
     if (
       isCallExpression(node) &&
       isIdentifier(node.expression) &&
@@ -53,12 +51,11 @@ export const replacements: Replacement[] = [
       node.arguments[0].getText() === "import.meta.url"
     ) {
       sm.overwrite(node.getStart(), node.getEnd(), "__filename");
+      return;
     }
-  },
 
-  // global = globalThis
-  // require = createRequire(import.meta.url)
-  (node, sm) => {
+    // global = globalThis
+    // require = createRequire(import.meta.url)
     if (isVariableStatement(node)) {
       const { declarations } = node.declarationList;
       let len = declarations.length;
@@ -89,6 +86,6 @@ export const replacements: Replacement[] = [
           }
         }
       }
+      return;
     }
-  },
-];
+  };

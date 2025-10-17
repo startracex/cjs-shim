@@ -7,20 +7,17 @@ import {
   visitNode,
   type Visitor,
 } from "typescript";
-import type { Replacement } from "./replacements.ts";
+import { shim } from "./shim.ts";
 
-export const createVisitor = (replacements: Replacement[], sm: MagicString): Visitor => {
+export const createVisitor = (ms: MagicString): Visitor => {
   const visitor: Visitor = (node) => {
-    for (const replacement of replacements) {
-      replacement(node, sm);
-    }
+    shim(node, ms);
     return visitEachChild(node, visitor, undefined);
   };
   return visitor;
 };
 
 export const transform = (
-  replacements: Replacement[],
   code: string,
   id: string,
 ): {
@@ -28,7 +25,7 @@ export const transform = (
   map: SourceMap;
 } => {
   const ms = new MagicString(code);
-  const visitor = createVisitor(replacements, ms);
+  const visitor = createVisitor(ms);
   const sourceFile = createSourceFile(id, code, ScriptTarget.Latest, true, ScriptKind.Deferred);
   visitNode(sourceFile, visitor);
   return {

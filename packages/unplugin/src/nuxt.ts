@@ -1,6 +1,5 @@
 import { addVitePlugin, addWebpackPlugin, defineNuxtModule } from "@nuxt/kit";
 import type { NuxtModule } from "@nuxt/schema";
-import { replacements } from "cjs-shim/replacements";
 import type { Options } from "./types.ts";
 import vite from "./vite.ts";
 import webpack from "./webpack.ts";
@@ -12,9 +11,7 @@ const _default: NuxtModule<ModuleOptions, ModuleOptions, false> = defineNuxtModu
     name: "nuxt-unplugin-cjs-shim",
     configKey: "unpluginCjsShim",
   },
-  defaults: {
-    replacements,
-  },
+  defaults: {},
   setup(options, _nuxt) {
     addVitePlugin(() => vite(options));
     addWebpackPlugin(() => webpack(options));

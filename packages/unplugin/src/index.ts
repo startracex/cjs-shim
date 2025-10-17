@@ -1,5 +1,4 @@
 import { createUnplugin, type UnpluginFactory, type UnpluginInstance } from "unplugin";
-import { replacements as r } from "cjs-shim/replacements";
 import { transform } from "cjs-shim";
 import type { Options } from "./types.ts";
 
@@ -7,7 +6,6 @@ const _include = /.(ts|tsx|js|jsx|mjs|mts)$/;
 const _exclude = /node_modules/;
 
 export const unpluginFactory: UnpluginFactory<Options | undefined> = ({
-  replacements = r,
   include = _include,
   exclude = _exclude,
 } = {}) => {
@@ -18,7 +16,7 @@ export const unpluginFactory: UnpluginFactory<Options | undefined> = ({
         id: { include, exclude },
       },
       handler(code, id) {
-        return transform(replacements, code, id);
+        return transform(code, id);
       },
     },
   };
