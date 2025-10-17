@@ -1,16 +1,14 @@
 import type { PluginObj, types as Types } from "@babel/core";
 
+const isImportMeta = (t: typeof Types, node: Types.Node): node is Types.MetaProperty =>
+  t.isMetaProperty(node) && node.meta.name === "import" && node.property.name === "meta";
+
 export default function ({ types: t }: { types: typeof Types }): PluginObj {
   return {
     name: "shim-cjs",
     visitor: {
       MemberExpression(path) {
-        const isImportMeta =
-          t.isMetaProperty(path.node.object) &&
-          path.node.object.meta.name === "import" &&
-          path.node.object.property.name === "meta";
-
-        if (!isImportMeta) {
+        if (!isImportMeta(t, path.node.object)) {
           return;
         }
 
@@ -38,12 +36,7 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
           return;
         }
 
-        const isImportMeta =
-          t.isMetaProperty(path.node.argument) &&
-          path.node.argument.meta.name === "import" &&
-          path.node.argument.property.name === "meta";
-
-        if (isImportMeta) {
+        if (isImportMeta(t, path.node.argument)) {
           path.replaceWith(t.stringLiteral("undefined"));
         }
       },
@@ -67,9 +60,7 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
             t.isIdentifier(init.callee, { name: "createRequire" }) &&
             init.arguments.length === 1 &&
             t.isMemberExpression(init.arguments[0]) &&
-            t.isMetaProperty(init.arguments[0].object) &&
-            init.arguments[0].object.meta.name === "import" &&
-            init.arguments[0].object.property.name === "meta" &&
+            isImportMeta(t, init.arguments[0].object) &&
             t.isIdentifier(init.arguments[0].property, { name: "url" });
 
           const isGlobalDecl = varName === "global" && t.isIdentifier(init, { name: "globalThis" });
@@ -95,9 +86,7 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
         const arg0 = path.node.arguments[0];
         const isImportMetaUrl =
           t.isMemberExpression(arg0) &&
-          t.isMetaProperty(arg0.object) &&
-          arg0.object.meta.name === "import" &&
-          arg0.object.property.name === "meta" &&
+          isImportMeta(t, arg0.object) &&
           t.isIdentifier(arg0.property, { name: "url" });
 
         if (isImportMetaUrl) {
