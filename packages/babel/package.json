@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "type": "module",
   "description": "CJS/Node shim plugin",
-  "dependencies": {
-    "@babel/core": "^7.28.4"
-  },
   "files": [
     "src",
     "build"
