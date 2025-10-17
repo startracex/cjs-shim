@@ -1,5 +1,11 @@
 # babel-plugin-cjs-shim
 
+## 0.1.1
+
+### Patch Changes
+
+- 1279bb1: remove @babel/core dependency
+
 ## 0.1.0
 
 ### Minor Changes
