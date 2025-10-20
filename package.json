@@ -13,7 +13,7 @@
     "@types/node": "^24.8.1",
     "@types/babel__core": "^7.20.5",
     "dprint": "^0.50.2",
-    "rollup": "^4.52.4",
+    "rollup": "^4.52.5",
     "rollup-plugin-oxc": "^0.7.0"
   }
 }
