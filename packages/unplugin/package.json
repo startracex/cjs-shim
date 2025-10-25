@@ -41,6 +41,12 @@
     },
     "./package.json": "./package.json"
   },
+  "keywords": [
+    "shim",
+    "cjs",
+    "node",
+    "unplugin"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/startracex/cjs-shim.git"

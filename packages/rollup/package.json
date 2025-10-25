@@ -19,6 +19,12 @@
     },
     "./*": "./*"
   },
+  "keywords": [
+    "shim",
+    "cjs",
+    "node",
+    "rollup"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/startracex/cjs-shim.git"

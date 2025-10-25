@@ -24,6 +24,12 @@
     },
     "./*": "./*"
   },
+  "keywords": [
+    "shim",
+    "cjs",
+    "node",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/startracex/cjs-shim.git"
