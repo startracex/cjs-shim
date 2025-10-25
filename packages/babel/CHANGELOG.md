@@ -1,5 +1,11 @@
 # babel-plugin-cjs-shim
 
+## 0.2.0
+
+### Minor Changes
+
+- 125d8a6: add replacement for `import.meta.main` to `require.main === module`
+
 ## 0.1.1
 
 ### Patch Changes
