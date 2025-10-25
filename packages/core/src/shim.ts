@@ -38,6 +38,10 @@ export const shim: Shim =
         case "resolve":
           sm.overwrite(node.getStart(), node.getEnd(), "require.resolve");
           return;
+        // import.meta.main -> require.main === module
+        case "main":
+          sm.overwrite(node.getStart(), node.getEnd(), "require.main === module");
+          return;
       }
       return;
     }

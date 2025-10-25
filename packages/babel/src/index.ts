@@ -27,6 +27,9 @@ export default function ({ types: t }: { types: typeof Types }): PluginObj {
             case "resolve":
               path.replaceWith(t.identifier("require.resolve"));
               return;
+            case "main":
+              path.replaceWith(t.identifier("require.main === module"));
+              return;
           }
         }
       },
