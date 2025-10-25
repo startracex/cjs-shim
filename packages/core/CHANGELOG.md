@@ -1,5 +1,11 @@
 # cjs-shim
 
+## 1.1.0
+
+### Minor Changes
+
+- 125d8a6: add replacement for `import.meta.main` to `require.main === module`
+
 ## 1.0.0
 
 ### Major Changes
