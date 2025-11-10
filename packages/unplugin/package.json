@@ -9,12 +9,12 @@
   },
   "devDependencies": {
     "@farmfe/core": "^1.7.11",
-    "@nuxt/kit": "^4.2.0",
-    "@nuxt/schema": "^4.2.0",
-    "esbuild": "^0.25.11",
-    "rolldown": "1.0.0-beta.44",
-    "rollup": "^4.52.5",
-    "vite": "^7.1.12",
+    "@nuxt/kit": "^4.2.1",
+    "@nuxt/schema": "^4.2.1",
+    "esbuild": "^0.27.0",
+    "rolldown": "1.0.0-beta.47",
+    "rollup": "^4.53.2",
+    "vite": "^7.2.2",
     "webpack": "^5.102.1"
   },
   "peerDependencies": {
