@@ -35,7 +35,7 @@ const makeOptions = (pkgPaths: string[]): RollupOptions[] => {
     const external = Object.keys({
       ...pkg.dependencies,
       ...pkg.peerDependencies,
-    }).map((name) => new RegExp(`^${name}($|\/.*$)`));
+    }).map((name) => new RegExp(`^${name}($|/.*$)`));
     return {
       input,
       external,
