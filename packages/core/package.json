@@ -4,8 +4,8 @@
   "type": "module",
   "description": "CJS/Node shims",
   "dependencies": {
-    "magic-string": "^0.30.21",
-    "typescript": "^5.9.3"
+    "magic-string": "^1.4.5",
+    "typescript": "^7.0.2"
   },
   "files": [
     "src",
