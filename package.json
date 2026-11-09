@@ -15,5 +15,6 @@
     "oxlint": "^1.92.0",
     "rollup": "^4.68.0",
     "rollup-plugin-oxc": "^0.8.0"
-  }
+  },
+  "packageManager": "pnpm@12.18.0"
 }
