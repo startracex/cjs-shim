@@ -5,17 +5,17 @@
   "description": "CJS/Node shim plugins",
   "dependencies": {
     "cjs-shim": "workspace:^",
-    "unplugin": "^2.3.11"
+    "unplugin": "^3.7.0"
   },
   "devDependencies": {
     "@farmfe/core": "^1.7.11",
-    "@nuxt/kit": "^4.2.2",
-    "@nuxt/schema": "^4.2.2",
-    "esbuild": "^0.27.2",
-    "rolldown": "1.0.0-beta.58",
-    "rollup": "^4.54.0",
-    "vite": "^7.3.0",
-    "webpack": "^5.104.1"
+    "@nuxt/kit": "^4.6.4",
+    "@nuxt/schema": "^4.6.4",
+    "esbuild": "^0.28.2",
+    "rolldown": "1.3.0",
+    "rollup": "^4.68.0",
+    "vite": "^8.3.6",
+    "webpack": "^5.112.2"
   },
   "peerDependencies": {
     "@nuxt/kit": "*"
